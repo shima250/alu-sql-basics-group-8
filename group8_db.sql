@@ -143,6 +143,45 @@ SELECT * FROM Courses WHERE credits >= 4;
 -- Digne: Extra_Curricular_Activities table
 -- =========================================================
 
+CREATE TABLE Extra_Curricular_Activities (
+    activity_id INT AUTO_INCREMENT PRIMARY KEY,
+    activity_name VARCHAR(100) NOT NULL,
+    activity_type VARCHAR(50),
+    meeting_day VARCHAR(20),
+    faculty_advisor_id INT,
+    FOREIGN KEY (faculty_advisor_id) REFERENCES Faculty(faculty_id)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE
+);
+
+-- Digne: sample data
+INSERT INTO Extra_Curricular_Activities 
+(activity_name, activity_type, meeting_day, faculty_advisor_id) VALUES
+('Debate Club', 'Academic', 'Monday', 1),
+('Football Team', 'Sports', 'Wednesday', 2),
+('Coding Club', 'Academic', 'Thursday', 3),
+('Traditional Dance', 'Cultural', 'Friday', 4),
+('Environmental Club', 'Service', 'Tuesday', 5);
+
+-- Digne: update
+UPDATE Extra_Curricular_Activities
+SET meeting_day = 'Tuesday'
+WHERE activity_id = 1;
+
+-- Digne: delete (demo row)
+INSERT INTO Extra_Curricular_Activities
+(activity_name, activity_type, meeting_day, faculty_advisor_id)
+VALUES
+('Temporary Club', 'Temporary', 'Sunday', 1);
+
+DELETE FROM Extra_Curricular_Activities
+WHERE activity_name = 'Temporary Club';
+
+-- Digne: select with WHERE
+SELECT *
+FROM Extra_Curricular_Activities
+WHERE activity_type = 'Academic';
+
 
 
 
