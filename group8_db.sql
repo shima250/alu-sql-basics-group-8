@@ -38,8 +38,31 @@ SELECT * FROM Faculty WHERE department = 'Mathematics';
 -- =========================================================
 -- Sandra: Classroom table
 -- =========================================================
-
-
+CREATE TABLE Classroom (
+    classroom_id INT AUTO_INCREMENT PRIMARY KEY,
+    room_number VARCHAR(10) NOT NULL,
+    building VARCHAR(50) NOT NULL,
+    capacity INT NOT NULL,
+    floor INT NOT NULL
+);
+-- Sandra: sample data
+INSERT INTO Classroom (room_number, building, capacity, floor) VALUES
+('A101', 'Main Block', 40, 1),
+('A102', 'Main Block', 35, 1),
+('B201', 'Innovation Block', 50, 2),
+('B202', 'Innovation Block', 30, 2),
+('C301', 'Science Block', 25, 3);
+-- Sandra: update
+UPDATE Classroom
+SET capacity = 45
+WHERE room_number = 'A101';
+-- Sandra: delete (demo row)
+INSERT INTO Classroom (room_number, building, capacity, floor) VALUES
+('Z999', 'Temp Block', 10, 9);
+DELETE FROM Classroom WHERE room_number = 'Z999';
+-- Sandra: select with WHERE
+SELECT * FROM Classroom
+WHERE capacity >= 40;
 
 
 
