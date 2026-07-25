@@ -1,6 +1,31 @@
 -- =========================================================
 -- Grace: Faculty table
 -- =========================================================
+CREATE TABLE Faculty (
+    faculty_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    department VARCHAR(50) NOT NULL
+);
+ 
+-- Grace: sample data
+INSERT INTO Faculty (name, email, department) VALUES
+('Dr. Alice Uwase',    'a.uwase@alu.edu',    'Computer Science'),
+('Dr. Brian Mugisha',  'b.mugisha@alu.edu',  'Mathematics'),
+('Ms. Clara Niyonsaba', 'c.niyonsaba@alu.edu', 'Business'),
+('Mr. David Habimana', 'd.habimana@alu.edu', 'Engineering'),
+('Dr. Esther Mukamana','e.mukamana@alu.edu', 'Humanities');
+ 
+-- Grace: update
+UPDATE Faculty SET department = 'Software Engineering' WHERE faculty_id = 1;
+ 
+-- Grace: delete (demo row)
+INSERT INTO Faculty (name, email, department) VALUES
+('Temp Faculty', 'temp@alu.edu', 'Temp Dept');
+DELETE FROM Faculty WHERE name = 'Temp Faculty';
+ 
+-- Grace: select with WHERE
+SELECT * FROM Faculty WHERE department = 'Mathematics';
 
 
 
